@@ -1,0 +1,13 @@
+.card {float:left; margin:15px;}
+.avatar {float:left; width:100px; height: 100px; border-radius: 50%;}
+.cardInfo {background-color: #1abfef; height: 30px; width: 145px; border-radius: 20px 20px 0 0; color:#fff; font-size: 25px; text-align:center; line-height: 33px;}
+.cardInfoFired {background-color: red; height: 30px; width: 145px; border-radius: 20px 20px 0 0; color:#fff; font-size: 25px; text-align:center; line-height: 33px;}
+.cardInfoTransported {background-color: orange; height: 30px; width: 145px; border-radius: 20px 20px 0 0; color:#fff; font-size: 25px; text-align:center; line-height: 33px;}
+.cardBodyBack {padding: 10px 0 0 10px; width:400px; height: 260px; background-color: #1abfef; border-radius: 0 30px 30px 30px;}
+.cardBodyBackFired {padding: 10px 0 0 10px; width:400px; height: 260px; background-color: red; border-radius: 0 30px 30px 30px;}
+.cardBodyBackTransported {padding: 10px 0 0 10px; width:400px; height: 260px; background-color: orange; border-radius: 0 30px 30px 30px;}
+.cardBody { width:380px; height: 240px; background-color: #fff; color:#000; border-radius:30px; padding: 20px;}
+.userInfo h3 {font-size: 25px; font-weight: bold;}
+.userInfo {float:left; width: 200px; margin-left: 30px;}
+.birthday {font-size:20px;}
+.departament {font-size:20px;}

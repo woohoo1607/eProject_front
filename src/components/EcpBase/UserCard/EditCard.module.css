@@ -1,0 +1,10 @@
+form {
+
+}
+
+.userInfo {width: 200px; margin-left: 140px;}
+.otherData {margin-top: 5px; display: flex; justify-content: space-between;}
+.otherDataLeft {}
+.otherDataRight {}
+.buttonDiv {text-align: center; margin-top: 3px; display: flex; justify-content: center;}
+.buttonDiv button {margin: 0 10px 0 10px;}
