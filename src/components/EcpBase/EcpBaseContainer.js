@@ -1,6 +1,6 @@
 import React from 'react';
 import EcpBase from './EcpBase';
-import {addEmployee, updateNewEmployeeName, setEmployees, setCurrentPage, getEmployees, updateEmployee} from "../../reducers/ecpBaseReducer";
+import {addEmployee, updateNewEmployeeName, setEmployees, setCurrentPage, getEmployees, updateEmployee, searchEmployee} from "../../reducers/ecpBaseReducer";
 import {connect} from "react-redux";
 import Preloader from "../Preloader";
 
@@ -69,6 +69,7 @@ class EcpBaseContainer extends React.Component {
                          deactiveteEdit={this.deactiveteEdit}
                          isActiveEdit={this.state.isActiveEdit}
                          updateEmployee={this.props.updateEmployee}
+                         searchEmployee={this.props.searchEmployee}
                 />
                 {this.props.ecpBase.isFetching ? <Preloader /> : null}
 </>
@@ -98,4 +99,4 @@ let mapStateToProps = (state) => {
 };*/
 
 
-export default connect(mapStateToProps, {updateNewEmployeeName, addEmployee, setEmployees, setCurrentPage, getEmployees, updateEmployee})(EcpBaseContainer);
+export default connect(mapStateToProps, {updateNewEmployeeName, addEmployee, setEmployees, setCurrentPage, getEmployees, updateEmployee, searchEmployee})(EcpBaseContainer);

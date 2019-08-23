@@ -1,4 +1,5 @@
 import {employeeAPI} from "../api/api";
+import {searchAPI} from "../api/api";
 
 const ADD_EMPLOYEE = "ADD_EMPLOYEE";
 const UPDATE_NEW_EMPLOYEE_NAME = "UPDATE_NEW_EMPLOYEE_NAME";
@@ -148,6 +149,12 @@ export const updateEmployee = (employee) => {
             };
         });
        
+    };
+};
+
+export const searchEmployee = (data) => {
+    return (dispatch) => {
+        searchAPI.search(data);
     };
 };
 

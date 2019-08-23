@@ -1,5 +1,6 @@
 import React from 'react';
 import UserCard from './UserCard/UserCard';
+import EcpBaseSearch from './EcpBaseSearch';
 
 
 let EcpBase = (props) => {
@@ -8,12 +9,7 @@ let EcpBase = (props) => {
 
     return (
             <div>
-                <div>
-                    <input onChange={ () => {
-                        props.onNameChange(newNameElement.current.value)}} ref={newNameElement}
-                        value={props.ecpBase.newEmployeeName} />
-                    <button onClick={props.onAddEmployee} >ADD</button>
-                </div>
+                <EcpBaseSearch searchEmployee={props.searchEmployee}/>
                                 {
                     props.ecpBase.employeesData
                             .map(employee => <UserCard key={employee._id} _id={employee._id} surname={employee.surname} name={employee.name} 
@@ -27,6 +23,7 @@ let EcpBase = (props) => {
                             activeteEdit={props.activeteEdit}
                             updateEmployee={props.updateEmployee}
                             isFetching={props.ecpBase.isFetching}
+                            
                         />)}
                         
                 <div className="clr"></div>

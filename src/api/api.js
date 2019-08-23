@@ -36,3 +36,9 @@ export const authAPI = {
     }
 
 };
+
+export const searchAPI = {
+  search(data) {
+      console.log(data);
+  }  
+};
