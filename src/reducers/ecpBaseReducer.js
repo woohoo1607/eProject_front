@@ -3,6 +3,7 @@ import {employeeAPI} from "../api/api";
 const ADD_EMPLOYEE = "ADD_EMPLOYEE";
 const UPDATE_NEW_EMPLOYEE_NAME = "UPDATE_NEW_EMPLOYEE_NAME";
 const SET_EMPLOYEES = "SET_EMPLOYEES";
+const UPDATE_EMPLOYEES = "UPDATE_EMPLOYEES";
 const FIRST_SET_EMPLOYEES = "FIRST_SET_EMPLOYEES";
 const SET_EMPLOYEE_COUNT = "SET_EMPLOYEE_COUNT";
 const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
@@ -55,6 +56,17 @@ const ecpBaseReducer = (state = initialState, action) => {
                 employeesData: [...state.employeesData, ...action.employeesData]
             };
         }
+        case UPDATE_EMPLOYEES:
+        {
+                let newEmployeesData = [ ...state.employeesData ];
+                let objIndex = newEmployeesData.findIndex(obj => obj._id === action.employee._id);
+                newEmployeesData[objIndex] = action.employee;
+                 
+            return {
+                ...state,
+                employeesData: [...newEmployeesData]
+            };
+        }
         case FIRST_SET_EMPLOYEES:
         {
             return {
@@ -96,6 +108,9 @@ export const updateNewEmployeeName = (name) =>
 export const setEmployees = (employees) =>
     ({type: SET_EMPLOYEES, employeesData: employees});
 
+export const updateEmployees = (employee) =>
+    ({type: UPDATE_EMPLOYEES, employee: employee});
+
 export const firstSetEmployees = (employees) =>
     ({type: FIRST_SET_EMPLOYEES, employeesData: employees});
 
@@ -120,6 +135,19 @@ export const getEmployees = (currentPage, pageSize) => {
                 };
             dispatch(setEmployeeCount(response.countAll));
         });  
+    };
+};
+
+export const updateEmployee = (employee) => {
+    return (dispatch) => {
+        dispatch(toggleIsFetching(true));
+        employeeAPI.updateEmployee(employee).then(response => {
+            dispatch(toggleIsFetching(false));
+            if (response.responseCode == 0) {
+              dispatch(updateEmployees(employee));
+            };
+        });
+       
     };
 };
 

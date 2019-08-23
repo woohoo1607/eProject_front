@@ -13,6 +13,12 @@ export const employeeAPI = {
         return instance.get(`employees?limit=${pageSize}&page=${currentPage}`).then(response => {
             return response.data;
         });
+    },
+    updateEmployee(employee) {
+        let data = qs.stringify(employee);
+        return instance.put('employees', data).then(response => {
+            return response.data;
+        });
     }
 
 };

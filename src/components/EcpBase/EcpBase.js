@@ -16,7 +16,7 @@ let EcpBase = (props) => {
                 </div>
                                 {
                     props.ecpBase.employeesData
-                            .map(employee => <UserCard key={employee._id} id={employee._id} surname={employee.surname} name={employee.name} 
+                            .map(employee => <UserCard key={employee._id} _id={employee._id} surname={employee.surname} name={employee.name} 
                             patronymic={employee.patronymic} department={employee.department} code={employee.code} 
                             keyword={employee.keyword} isResponsible={employee.isResponsible} birthday={employee.birthday}
                             password={employee.password} fired={employee.fired} transported={employee.transported} 
@@ -25,6 +25,8 @@ let EcpBase = (props) => {
                             isActiveEdit={props.isActiveEdit}
                             deactiveteEdit={props.deactiveteEdit}        
                             activeteEdit={props.activeteEdit}
+                            updateEmployee={props.updateEmployee}
+                            isFetching={props.ecpBase.isFetching}
                         />)}
                         
                 <div className="clr"></div>

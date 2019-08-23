@@ -65,7 +65,22 @@ const EditCardReduxForm = reduxForm({form: 'editCard'})(EditCardForm);
 
 const EditCard = (props) => {
     const onSubmit = (formData) => {
-        console.log(formData);
+        let employeeUpdateData = {
+            _id: formData._id,
+            surname: formData.surname,
+            name: formData.name,
+            patronymic: formData.patronymic,
+            department: formData.department,
+            code: formData.code,
+            keyword: formData.keyword,
+            isResponsible: formData.isResponsible,
+            birthday: formData.birthday,
+            password: formData.password,
+            fired: formData.fired,
+            transported: formData.transported,
+            expirationDateSertificate: formData.expirationDateSertificate
+            };
+        props.updateEmployee(employeeUpdateData);
         props.deactivated();
     };
 

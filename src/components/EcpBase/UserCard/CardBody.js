@@ -2,13 +2,14 @@ import React from 'react';
 import Avatar from "./avatar.png";
 import styles from './UserCard.module.css';
 import EditCard from './EditCard';
+import Preloader from "../../Preloader";
 
 class CardBody extends React.Component {
     
     state = {
         editMode: false,
         data: {
-            id: this.props.id,
+            _id: this.props._id,
             surname: this.props.surname,
             name: this.props.name,
             patronymic: this.props.patronymic,
@@ -21,6 +22,22 @@ class CardBody extends React.Component {
             expirationDateSertificate: this.props.expirationDateSertificate,
             keyword: this.props.keyword,
             isResponsible: this.props.isResponsible
+        },
+        isFetching: false
+    }
+    
+    componentDidUpdate (prevProps, prevState) {
+        if (prevProps !== this.props) {
+            this.setState({
+                data: this.props,
+            })
+        }
+        if (this.state.isFetching) {
+            if (!this.props.isFetching) {
+                this.setState({
+                    isFetching: false
+                });
+            }
         }
     }
     
@@ -36,7 +53,8 @@ class CardBody extends React.Component {
     deactivatedEditMode = () => {
         this.props.deactiveteEdit();
         this.setState( {
-            editMode: false
+            editMode: false,
+            isFetching: true
         });
     }
     
@@ -48,14 +66,18 @@ class CardBody extends React.Component {
                 : styles.cardBodyBackTransported}
                 onDoubleClick={this.activatedEditMode}
             >
+
                 <div className={styles.cardBody}>
+                    {this.state.isFetching && <Preloader />}
+                    {!this.state.isFetching && 
                     <div className={styles.avatar}>
                         <img src={Avatar} width="100" alt="avatar"/>
                     </div>
+                    }
                     
-                    {this.state.editMode && <EditCard data={this.state.data} deactivated={this.deactivatedEditMode}/>}
+                    {this.state.editMode && <EditCard data={this.state.data} deactivated={this.deactivatedEditMode} updateEmployee={this.props.updateEmployee}/>}
                     
-                    {!this.state.editMode &&
+                    {!this.state.editMode && !this.state.isFetching &&
                     <>
                         <div className={styles.userInfo}>
                             <h3>{this.props.surname} {this.props.name} {this.props.patronymic}</h3>
