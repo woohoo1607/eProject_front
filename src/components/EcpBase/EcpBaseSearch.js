@@ -29,7 +29,8 @@ const EcpBaseSearch = (props) => {
     };
     let timer = null;
     const editInput = (e) => {
-        let data = e.nativeEvent.path[0].value;
+
+        let data = e.target.value;
         if (timer){
             clearTimeout(timer);
         }
